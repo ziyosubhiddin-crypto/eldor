@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VORTEX TENNIS CLUB | Professional Tennis Klubi & Akademiya</title>
+  <meta name="description" content="Vortex Tennis Club - O'zbekistondagi eng zamonaviy professional tennis klubi va akademiyasi. Kortlarni onlayn band qiling, murabbiylar bilan shug'ullaning va professional tennis anjomlarini xarid qiling.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" client-hints>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22 width=%2232%22 height=%2232%22><circle cx=%2216%22 cy=%2216%22 r=%2215%22 fill=%22%23d4fc04%22/><path d=%22M6,6 Q16,14 6,26 M26,6 Q16,14 26,26%22 fill=%22none%22 stroke=%22%2308231a%22 stroke-width=%222.5%22/></svg>">
+</head>
+<body class="theme-dark">
+
+  <!-- SOUND TOGGLE & NOTIFICATIONS CONTAINER -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="site-header" id="header">
+    <div class="header-inner container">
+      <a href="#" class="brand-logo" id="brandLogo">
+        <div class="logo-ball-icon">
+          <svg viewBox="0 0 36 36" class="tennis-ball-svg">
+            <circle cx="18" cy="18" r="16" class="ball-bg" />
+            <path d="M 6 8 C 16 12, 16 24, 6 28" class="ball-seam" />
+            <path d="M 30 8 C 20 12, 20 24, 30 28" class="ball-seam" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">VORTEX</span>
+          <span class="brand-sub">TENNIS CLUB</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active" data-i18n="nav_home">Bosh sahifa</a></li>
+          <li><a href="#booking" class="nav-link" data-i18n="nav_booking">Kort band qilish</a></li>
+          <li><a href="#live-scores" class="nav-link" data-i18n="nav_scores">Jonli Natijalar</a></li>
+          <li><a href="#academy" class="nav-link" data-i18n="nav_academy">Akademiya</a></li>
+          <li><a href="#pro-shop" class="nav-link" data-i18n="nav_shop">Pro Do'kon</a></li>
+          <li><a href="#mini-game" class="nav-link nav-highlight" data-i18n="nav_game">Mini O'yin 🎾</a></li>
+          <li><a href="#pricing" class="nav-link" data-i18n="nav_pricing">Narxlar</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Sound FX Button -->
+        <button id="soundToggleBtn" class="action-btn icon-btn" title="Ovozni yoqish/o'chirish" aria-label="Toggle Sound">
+          <span class="sound-icon-on">🔊</span>
+          <span class="sound-icon-off" style="display:none;">🔇</span>
+        </button>
+
+        <!-- Language Switcher -->
+        <div class="lang-switcher">
+          <button id="langUzBtn" class="lang-btn active">UZ</button>
+          <span class="lang-divider">/</span>
+          <button id="langEnBtn" class="lang-btn">EN</button>
+        </div>
+
+        <!-- Cart Button with Counter -->
+        <button id="cartBtn" class="action-btn cart-btn" aria-label="Savat">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span id="cartCountBadge" class="cart-badge">0</span>
+        </button>
+
+        <!-- Primary CTA -->
+        <a href="#booking" class="btn btn-primary header-cta" data-i18n="book_now_btn">Kortni Band Qilish</a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobileMenuBtn" class="mobile-toggle" aria-label="Menyu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-wrapper">
+        <img src="images/hero-court.jpg" alt="Vortex Championship Tennis Court" class="hero-bg-img" id="heroBgImage">
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-content container">
+        <div class="hero-badge">
+          <span class="badge-pulse"></span>
+          <span data-i18n="hero_badge">O'ZBEKISTONDAGI №1 ELITA TENNIS MAJMUASI</span>
+        </div>
+
+        <h1 class="hero-title" data-i18n="hero_title">
+          Chempionlar Maydoni. <br>
+          <span class="text-gradient">O'z O'yiningizni</span> Yangi Bosqichga Ko'taring.
+        </h1>
+
+        <p class="hero-desc" data-i18n="hero_desc">
+          Wimbledon sifatidagi tabiiy chim, professional tuproq (clay) va xalqaro standartdagi qattiq kortlar. Tajribali ATP murabbiylari hamda zamonaviy tennis infratuzilmasi.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-primary btn-lg" id="heroBookCta" data-i18n="hero_cta_book">
+            <span>Kortni Band Qilish</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#mini-game" class="btn btn-glass btn-lg" id="heroGameCta" data-i18n="hero_cta_game">
+            <span>🎾 Tennis Mini-O'yin</span>
+          </a>
+        </div>
+
+        <!-- Real-time Live Conditions Banner -->
+        <div class="court-live-bar">
+          <div class="live-item">
+            <span class="live-icon">🌤️</span>
+            <div>
+              <span class="live-label" data-i18n="weather_lbl">Ob-havo:</span>
+              <strong class="live-val">24°C Toshkent, Ochiq</strong>
+            </div>
+          </div>
+          <div class="live-divider"></div>
+          <div class="live-item">
+            <span class="live-icon">🎾</span>
+            <div>
+              <span class="live-label" data-i18n="courts_open_lbl">Mavjud Kortlar:</span>
+              <strong class="live-val text-neon" id="availableCourtsCount">12 / 16 Bosh</strong>
+            </div>
+          </div>
+          <div class="live-divider"></div>
+          <div class="live-item">
+            <span class="live-icon">⏰</span>
+            <div>
+              <span class="live-label" data-i18n="hours_lbl">Ish Vaqti:</span>
+              <strong class="live-val">06:00 - 23:30</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="hero-stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">16+</div>
+            <div class="stat-text" data-i18n="stat_courts">Professional Kortlar</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">8</div>
+            <div class="stat-text" data-i18n="stat_coaches">ATP Sertifikatli Murabbiylar</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">2.5K+</div>
+            <div class="stat-text" data-i18n="stat_members">Doimiy A'zolar</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">4.9★</div>
+            <div class="stat-text" data-i18n="stat_rating">Xalqaro Baholash</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE COURT BOOKING WIZARD -->
+    <section class="section booking-section" id="booking">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="booking_tag">ONLINE BAND QILISH</span>
+          <h2 class="section-title" data-i18n="booking_title">O'z Kortingizni Tanlang va Band Qiling</h2>
+          <p class="section-subtitle" data-i18n="booking_subtitle">Har xil qoplamali xalqaro standartdagi kortlar. Qulay vaqtni tanlang va 1 daqiqada tasdiqlang.</p>
+        </div>
+
+        <div class="booking-grid">
+          <!-- Step 1: Court Type Selection -->
+          <div class="booking-card court-select-card">
+            <h3 class="card-step-title"><span class="step-num">1</span> <span data-i18n="step1_title">Kort turini tanlang</span></h3>
+            
+            <div class="court-cards-list" id="courtList">
+              <div class="court-choice active" data-court="grass" data-price="200000">
+                <div class="court-color-badge grass-badge"></div>
+                <div class="court-info">
+                  <div class="court-name">Wimbledon Chim Korti (Grass)</div>
+                  <div class="court-desc">Klassik tabiiy maysa, to'pning tez va past sakrashi. Grand Slam darajasi.</div>
+                </div>
+                <div class="court-price">200,000 <small>so'm/soat</small></div>
+              </div>
+
+              <div class="court-choice" data-court="clay" data-price="180000">
+                <div class="court-color-badge clay-badge"></div>
+                <div class="court-info">
+                  <div class="court-name">Roland Garros Tuproq Korti (Clay)</div>
+                  <div class="court-desc">Haqiqiy qizil kukunli tuproq, uzoq ralli va sirpanish taktikasi uchun a'lo.</div>
+                </div>
+                <div class="court-price">180,000 <small>so'm/soat</small></div>
+              </div>
+
+              <div class="court-choice" data-court="hard" data-price="150000">
+                <div class="court-color-badge hard-badge"></div>
+                <div class="court-info">
+                  <div class="court-name">US Open Qattiq Kort (Hard Court)</div>
+                  <div class="court-desc">Akril qoplamali zamonaviy maydon, bir tekis va mukammal dinamika.</div>
+                </div>
+                <div class="court-price">150,000 <small>so'm/soat</small></div>
+              </div>
+
+              <div class="court-choice" data-court="indoor" data-price="250000">
+                <div class="court-color-badge indoor-badge"></div>
+                <div class="court-info">
+                  <div class="court-name">VIP Yopiq Arena (Indoor Climate)</div>
+                  <div class="court-desc">To'liq konditsionerlangan, 4K video-tahlil va dush xonalari bilan.</div>
+                </div>
+                <div class="court-price">250,000 <small>so'm/soat</small></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Date, Time & Add-ons -->
+          <div class="booking-card details-card">
+            <h3 class="card-step-title"><span class="step-num">2</span> <span data-i18n="step2_title">Sana va vaqtni belgilang</span></h3>
+
+            <!-- Date Selector -->
+            <div class="form-group">
+              <label class="form-label" data-i18n="date_label">O'yin kuni:</label>
+              <div class="date-chips" id="dateChips">
+                <button type="button" class="date-chip active" data-date-offset="0">
+                  <span class="day-name" data-i18n="date_today">Bugun</span>
+                  <span class="day-val" id="todayDateStr">08 Okt</span>
+                </button>
+                <button type="button" class="date-chip" data-date-offset="1">
+                  <span class="day-name" data-i18n="date_tomorrow">Ertaga</span>
+                  <span class="day-val" id="tomorrowDateStr">09 Okt</span>
+                </button>
+                <button type="button" class="date-chip" data-date-offset="2">
+                  <span class="day-name" id="dayAfterDayName">Shanba</span>
+                  <span class="day-val" id="dayAfterDateStr">10 Okt</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Time Slots Grid -->
+            <div class="form-group">
+              <label class="form-label" data-i18n="time_label">Vaqt oralig'i (1.5 soat):</label>
+              <div class="time-slots-grid" id="timeSlotsGrid">
+                <button type="button" class="time-slot" data-time="07:00 - 08:30">07:00</button>
+                <button type="button" class="time-slot" data-time="08:30 - 10:00">08:30</button>
+                <button type="button" class="time-slot active" data-time="10:00 - 11:30">10:00</button>
+                <button type="button" class="time-slot occupied" disabled title="Band qilingan">11:30 (Band)</button>
+                <button type="button" class="time-slot" data-time="14:00 - 15:30">14:00</button>
+                <button type="button" class="time-slot" data-time="16:00 - 17:30">16:00</button>
+                <button type="button" class="time-slot" data-time="18:00 - 19:30">18:00</button>
+                <button type="button" class="time-slot" data-time="20:00 - 21:30">20:00</button>
+              </div>
+            </div>
+
+            <!-- Addon options -->
+            <div class="form-group">
+              <label class="form-label" data-i18n="addons_label">Qo'shimcha xizmatlar:</label>
+              <div class="addons-list">
+                <label class="addon-checkbox">
+                  <input type="checkbox" id="addonRacket" value="30000">
+                  <span class="check-box-custom"></span>
+                  <span class="addon-title" data-i18n="addon_racket">Babolat / Wilson Racketka ijarasi</span>
+                  <span class="addon-price">+30,000 so'm</span>
+                </label>
+                <label class="addon-checkbox">
+                  <input type="checkbox" id="addonCoach" value="120000">
+                  <span class="check-box-custom"></span>
+                  <span class="addon-title" data-i18n="addon_coach">Shaxsiy murabbiy yordami (1 soat)</span>
+                  <span class="addon-price">+120,000 so'm</span>
+                </label>
+                <label class="addon-checkbox">
+                  <input type="checkbox" id="addonBalls" value="20000" checked>
+                  <span class="check-box-custom"></span>
+                  <span class="addon-title" data-i18n="addon_balls">Yangi to'plar savati (6 dona)</span>
+                  <span class="addon-price">+20,000 so'm</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Booking Order Summary & Confirm -->
+            <div class="booking-summary-box">
+              <div class="summary-line">
+                <span data-i18n="sum_court">Tanlangan kort:</span>
+                <strong id="sumCourtName">Wimbledon Chim Korti</strong>
+              </div>
+              <div class="summary-line">
+                <span data-i18n="sum_slot">Vaqt:</span>
+                <strong id="sumTimeSlot">Bugun, 10:00 - 11:30</strong>
+              </div>
+              <div class="summary-divider"></div>
+              <div class="summary-total">
+                <span data-i18n="sum_total">Jami to'lov:</span>
+                <span class="total-amount" id="sumTotalPrice">220,000 so'm</span>
+              </div>
+
+              <button type="button" class="btn btn-primary btn-block" id="confirmBookingBtn" data-i18n="confirm_booking_btn">
+                Band Qilishni Tasdiqlash
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE GRAND SLAM & MATCH SCORES -->
+    <section class="section live-scores-section" id="live-scores">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="scores_tag">ATP & WTA ARENA</span>
+          <h2 class="section-title" data-i18n="scores_title">Jonli Tennis Matchlari & Natijalari</h2>
+          <p class="section-subtitle" data-i18n="scores_subtitle">Real vaqtdagi Grand Slam to'qnashuvlari va klub o'rtasidagi chempionatlar hisobi.</p>
+        </div>
+
+        <div class="scores-container">
+          <!-- Tournament Banner -->
+          <div class="live-match-header">
+            <div class="tournament-info">
+              <span class="status-live"><span class="blink-dot"></span> JONLI EFIR</span>
+              <span class="tournament-title">WIMBLEDON GRAND SLAM — FINAL 2026</span>
+              <span class="court-name">Center Court, London</span>
+            </div>
+            <button class="btn btn-sm btn-glass" id="simulatePointBtn" data-i18n="sim_point_btn">⚡ O'yinni Jonli Tebrating</button>
+          </div>
+
+          <!-- Featured Match Scoreboard -->
+          <div class="scoreboard-main">
+            <!-- Player 1 -->
+            <div class="player-row" id="player1Row">
+              <div class="player-profile">
+                <div class="player-flag">🇪🇸</div>
+                <div class="player-details">
+                  <div class="player-name">Carlos Alcaraz <span class="seed">(1)</span></div>
+                  <div class="player-serve" id="p1Serve">🎾 Server</div>
+                </div>
+              </div>
+              <div class="sets-scores">
+                <span class="set-val">6</span>
+                <span class="set-val">4</span>
+                <span class="set-val set-current" id="p1CurrentSet">5</span>
+              </div>
+              <div class="game-points-box" id="p1Points">40</div>
+            </div>
+
+            <div class="scoreboard-separator"></div>
+
+            <!-- Player 2 -->
+            <div class="player-row" id="player2Row">
+              <div class="player-profile">
+                <div class="player-flag">🇮🇹</div>
+                <div class="player-details">
+                  <div class="player-name">Jannik Sinner <span class="seed">(2)</span></div>
+                  <div class="player-serve hidden" id="p2Serve">🎾 Server</div>
+                </div>
+              </div>
+              <div class="sets-scores">
+                <span class="set-val">4</span>
+                <span class="set-val">6</span>
+                <span class="set-val set-current" id="p2CurrentSet">4</span>
+              </div>
+              <div class="game-points-box" id="p2Points">30</div>
+            </div>
+
+            <!-- Match stats ticker -->
+            <div class="match-ticker">
+              <span class="ticker-stat">🚀 O'rtacha Serve: <strong>214 km/h</strong></span>
+              <span class="ticker-stat">🎯 Eyslar (Aces): <strong>14 - 11</strong></span>
+              <span class="ticker-stat">⏱ O'yin vaqti: <strong>2h 38m</strong></span>
+              <span class="ticker-stat">🔥 Rally davomiyligi: <strong id="liveRallyCounter">18 zarba</strong></span>
+            </div>
+          </div>
+
+          <!-- Upcoming Matches Mini Grid -->
+          <div class="upcoming-matches-grid">
+            <div class="mini-match-card">
+              <div class="match-time-tag" data-i18n="match_time_1">Bugun 18:00 • Yarim Final</div>
+              <div class="mini-players">
+                <div class="p-line"><span>🇷🇸 N. Djokovic</span> <span class="score-pre">v</span></div>
+                <div class="p-line"><span>🇩🇪 A. Zverev</span> <span class="score-pre">-</span></div>
+              </div>
+              <div class="court-sub">Center Court • Tuproq</div>
+            </div>
+
+            <div class="mini-match-card">
+              <div class="match-time-tag" data-i18n="match_time_2">Bugun 19:30 • Ayollar Finali</div>
+              <div class="mini-players">
+                <div class="p-line"><span>🇵🇱 I. Swiatek</span> <span class="score-pre">v</span></div>
+                <div class="p-line"><span>🇧🇾 A. Sabalenka</span> <span class="score-pre">-</span></div>
+              </div>
+              <div class="court-sub">Court 1 • Chim</div>
+            </div>
+
+            <div class="mini-match-card">
+              <div class="match-time-tag" data-i18n="match_time_3">Ertaga 16:00 • Vortex Klub Chempionati</div>
+              <div class="mini-players">
+                <div class="p-line"><span>🇺🇿 S. Rahimov</span> <span class="score-pre">v</span></div>
+                <div class="p-line"><span>🇺🇿 J. Karimov</span> <span class="score-pre">-</span></div>
+              </div>
+              <div class="court-sub">Vortex Arena 1</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE MINI TENNIS CANVAS GAME -->
+    <section class="section mini-game-section" id="mini-game">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="game_tag">INTERAKTIV O'YIN</span>
+          <h2 class="section-title" data-i18n="game_title">🎾 VORTEX TENNIS RALLY CHALLENGE</h2>
+          <p class="section-subtitle" data-i18n="game_subtitle">Sichqoncha yoki barmoq bilan raketkangizni boshqaring. Rallini buzmasdan eng yuqori ochkoni yig'ing!</p>
+        </div>
+
+        <div class="game-wrapper">
+          <div class="game-top-bar">
+            <div class="game-stat-pill">
+              <span class="pill-label" data-i18n="game_score_lbl">Ochko:</span>
+              <span class="pill-val text-neon" id="gameScoreDisplay">0</span>
+            </div>
+            <div class="game-stat-pill">
+              <span class="pill-label" data-i18n="game_streak_lbl">Zarbalar Rallisi:</span>
+              <span class="pill-val" id="gameStreakDisplay">0</span>
+            </div>
+            <div class="game-stat-pill">
+              <span class="pill-label" data-i18n="game_best_lbl">Eng Yaxshi Rekord:</span>
+              <span class="pill-val text-gold" id="gameBestDisplay">0</span>
+            </div>
+            <div class="game-controls-help">
+              <span class="key-hint">🖱️ Boshqaruv: Sichqoncha / Sensor</span>
+            </div>
+          </div>
+
+          <div class="canvas-container">
+            <canvas id="tennisCanvas" width="800" height="450"></canvas>
+            <div class="game-overlay" id="gameOverOverlay" style="display: none;">
+              <div class="overlay-modal">
+                <h3 class="overlay-title" id="overlayTitle">OUT! O'yin Yakunlandi</h3>
+                <p class="overlay-score-msg">To'plangan ochko: <strong id="overlayScore">0</strong></p>
+                <button class="btn btn-primary btn-lg" id="restartGameBtn" data-i18n="restart_game_btn">Qaytadan O'ynash 🎾</button>
+              </div>
+            </div>
+            <div class="game-start-overlay" id="gameStartOverlay">
+              <div class="overlay-modal">
+                <div class="trophy-icon">🏆</div>
+                <h3 class="overlay-title">VORTEX TENNIS KORTIDA O'YNA!</h3>
+                <p class="overlay-subtitle">Raketkani chapga/o'ngga siljiting va to'pni raqib tomoniga qaytaring.</p>
+                <button class="btn btn-primary btn-lg" id="startGameBtn" data-i18n="start_game_btn">O'yinni Boshlash 🚀</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TENNIS ACADEMY & COACHES -->
+    <section class="section academy-section" id="academy">
+      <div class="container">
+        <div class="academy-highlight-box">
+          <div class="academy-content">
+            <span class="section-tag" data-i18n="academy_tag">VORTEX ACADEMY</span>
+            <h2 class="section-title" data-i18n="academy_title">Bolalar va Kattalar Uchun Professional Ta'lim</h2>
+            <p class="academy-desc" data-i18n="academy_desc">
+              Bizning murabbiylarimiz xalqaro ATP/ITF standartlariga ega bo'lib, noldan boshlovchilardan tortib professional musobaqa ishtirokchilarigacha professional dastur asosida dars beradi.
+            </p>
+            <ul class="academy-perks">
+              <li>✨ Individual va guruh mashg'ulotlari (maksimal 4 kishi)</li>
+              <li>🎯 High-speed video tahlil va harakat biotexnikasi</li>
+              <li>🥗 Professional sport nutrition va jismoniy tayyorgarlik</li>
+              <li>🏆 Xalqaro turnirlarga yo'llanmalar</li>
+            </ul>
+            <div class="academy-actions">
+              <a href="#booking" class="btn btn-primary" data-i18n="academy_enroll_btn">Sinov Darsiga Yozilish</a>
+            </div>
+          </div>
+          <div class="academy-visual">
+            <img src="images/coach-action.jpg" alt="Vortex Tennis Master Coach" class="academy-img">
+            <div class="coach-badge-float">
+              <strong>12+ Yillik</strong> Tajribaga ega Head Coach
+            </div>
+          </div>
+        </div>
+
+        <!-- Coach Cards Grid -->
+        <div class="coaches-grid">
+          <div class="coach-card">
+            <div class="coach-avatar-wrapper">
+              <div class="coach-initials">SR</div>
+              <span class="coach-badge-type">Head Coach</span>
+            </div>
+            <div class="coach-info">
+              <h4 class="coach-name">Sardor Rahimov</h4>
+              <div class="coach-rank">ATP Level 3 Sertifikati • 14 Yil Tajriba</div>
+              <p class="coach-bio">O'zbekiston yoshlar terma jamoasining sobiq murabbiyi. Qattiq zarba va serve texnikasi mutaxassisi.</p>
+              <div class="coach-meta">
+                <span>⭐ 4.9 (180+ shogird)</span>
+                <button class="btn btn-xs btn-outline coach-book-btn" data-coach="Sardor Rahimov">Darsga yozilish</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="coach-card">
+            <div class="coach-avatar-wrapper">
+              <div class="coach-initials">EP</div>
+              <span class="coach-badge-type">Junior Pro</span>
+            </div>
+            <div class="coach-info">
+              <h4 class="coach-name">Elena Petrova</h4>
+              <div class="coach-rank">ITF Master Coach • 10 Yil Tajriba</div>
+              <p class="coach-bio">Yosh tennischilarni xalqaro turnirlarga tayyorlash va individual psixologik taktikalar bo'yicha ekspert.</p>
+              <div class="coach-meta">
+                <span>⭐ 5.0 (120+ shogird)</span>
+                <button class="btn btn-xs btn-outline coach-book-btn" data-coach="Elena Petrova">Darsga yozilish</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="coach-card">
+            <div class="coach-avatar-wrapper">
+              <div class="coach-initials">DM</div>
+              <span class="coach-badge-type">Clay Master</span>
+            </div>
+            <div class="coach-info">
+              <h4 class="coach-name">David Miller</h4>
+              <div class="coach-rank">PTR Certified • 12 Yil Tajriba</div>
+              <p class="coach-bio">Ispaniya tennis akademiyasi bitiruvchisi. Tuproq maydonda uzoq pozitsion o'yin va oyoq tezligi bo'yicha mutaxassis.</p>
+              <div class="coach-meta">
+                <span>⭐ 4.8 (95+ shogird)</span>
+                <button class="btn btn-xs btn-outline coach-book-btn" data-coach="David Miller">Darsga yozilish</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRO SHOP & GEAR SECTION -->
+    <section class="section pro-shop-section" id="pro-shop">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="shop_tag">PRO SHOP</span>
+          <h2 class="section-title" data-i18n="shop_title">Professional Tennis Anjomlari</h2>
+          <p class="section-subtitle" data-i18n="shop_subtitle">Dunyoning yetakchi brendlari — Wilson, Babolat, Head, Nike mahsulotlari 100% kafolat bilan.</p>
+        </div>
+
+        <!-- Shop banner -->
+        <div class="shop-featured-banner">
+          <div class="banner-img-box">
+            <img src="images/gear-rackets.jpg" alt="Wilson and Babolat Rackets" class="shop-banner-img">
+          </div>
+          <div class="banner-content">
+            <div class="banner-promo-tag">💥 Yangi Kolleksiya 2026</div>
+            <h3 class="banner-heading">Babolat Pure Aero & Wilson Pro Staff</h3>
+            <p class="banner-text">Maksimal aylantirish (spin) va jarrohlik aniqligidagi boshqaruv. Klub a'zolari uchun maxsus 15% chegirma!</p>
+            <a href="#pro-shop" class="btn btn-primary" onclick="window.filterShop('racket')" data-i18n="view_rackets_btn">Racketkalarni Ko'rish</a>
+          </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="shop-filters">
+          <button class="shop-filter-btn active" data-category="all" data-i18n="filter_all">Barchasi</button>
+          <button class="shop-filter-btn" data-category="racket" data-i18n="filter_rackets">Racketkalar</button>
+          <button class="shop-filter-btn" data-category="balls" data-i18n="filter_balls">To'plar</button>
+          <button class="shop-filter-btn" data-category="apparel" data-i18n="filter_apparel">Kiyim & Sumkalar</button>
+          <button class="shop-filter-btn" data-category="accessories" data-i18n="filter_acc">Aksessuarlar</button>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="productsGrid">
+          <!-- Items injected via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBERSHIP & PRICING -->
+    <section class="section pricing-section" id="pricing">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="pricing_tag">A'ZOLIK TARIFLARI</span>
+          <h2 class="section-title" data-i18n="pricing_title">O'zingizga Mos Klub A'zoligini Tanlang</h2>
+          <p class="section-subtitle" data-i18n="pricing_subtitle">Moslashuvchan paketlar, bepul dush va sauna, ustuvor kort band qilish huquqi.</p>
+
+          <!-- Billing Period Switcher -->
+          <div class="billing-toggle">
+            <span class="toggle-lbl" id="lblMonthly" data-i18n="plan_monthly">Oylik to'lov</span>
+            <label class="switch-ui">
+              <input type="checkbox" id="billingPeriodToggle">
+              <span class="slider round"></span>
+            </label>
+            <span class="toggle-lbl" id="lblAnnual">Yillik to'lov <span class="discount-badge">-20% TEJANG</span></span>
+          </div>
+        </div>
+
+        <div class="pricing-cards-grid">
+          <!-- Starter Tier -->
+          <div class="pricing-card">
+            <div class="plan-header">
+              <h3 class="plan-name">Club Starter</h3>
+              <p class="plan-desc">Hafta oxiri va erkin o'yinlar uchun qulay reja.</p>
+            </div>
+            <div class="plan-price">
+              <span class="currency">UZS</span>
+              <span class="amount" data-monthly="650,000" data-annual="520,000">650,000</span>
+              <span class="period" data-i18n="per_month">/oy</span>
+            </div>
+            <ul class="plan-features">
+              <li>✔️ Oyiga 6 soat bepul kort ijarasi</li>
+              <li>✔️ Standart qattiq (hard) kortlarga kirish</li>
+              <li>✔️ Kiyinish va dush xonalaridan foydalanish</li>
+              <li>❌ Bepul murabbiy darsi</li>
+              <li>❌ VIP Yopiq kort imtiyozi</li>
+            </ul>
+            <button class="btn btn-outline btn-block select-plan-btn" data-plan="Club Starter" data-i18n="plan_select_btn">Tanlash</button>
+          </div>
+
+          <!-- Pro Player Tier (Popular) -->
+          <div class="pricing-card featured-tier">
+            <div class="popular-ribbon">ENG MASHHUR</div>
+            <div class="plan-header">
+              <h3 class="plan-name">Pro Player</h3>
+              <p class="plan-desc">Doimiy mashg'ulot qiluvchi havaskor va atletlar uchun.</p>
+            </div>
+            <div class="plan-price">
+              <span class="currency">UZS</span>
+              <span class="amount" data-monthly="1,450,000" data-annual="1,160,000">1,450,000</span>
+              <span class="period" data-i18n="per_month">/oy</span>
+            </div>
+            <ul class="plan-features">
+              <li>✔️ Oyiga 16 soat har qanday kort ijarasi (Chim, Clay, Hard)</li>
+              <li>✔️ Oyiga 2 ta bepul individual murabbiy soati</li>
+              <li>✔️ Pro Shop'dagi barcha tovarlarga 10% chegirma</li>
+              <li>✔️ Sauna va Recovery zonasi bepul</li>
+              <li>✔️ Ustuvor (VIP) navbatsiz onlayn bron</li>
+            </ul>
+            <button class="btn btn-primary btn-block select-plan-btn" data-plan="Pro Player" data-i18n="plan_select_btn">Tanlash</button>
+          </div>
+
+          <!-- VIP Champion Tier -->
+          <div class="pricing-card">
+            <div class="plan-header">
+              <h3 class="plan-name">VIP Champion</h3>
+              <p class="plan-desc">Cheklovlarsiz elita xizmat va VIP tajriba.</p>
+            </div>
+            <div class="plan-price">
+              <span class="currency">UZS</span>
+              <span class="amount" data-monthly="2,900,000" data-annual="2,320,000">2,900,000</span>
+              <span class="period" data-i18n="per_month">/oy</span>
+            </div>
+            <ul class="plan-features">
+              <li>✔️ Cheksiz kort ijarasi (24/7 oldindan band qilish)</li>
+              <li>✔️ Yopiq VIP Arena va 4K Video tahlil tizimi</li>
+              <li>✔️ Haftasiga 2 ta ATP murabbiy shaxsiy darsi</li>
+              <li>✔️ To'liq sport jihozlari va bepul to'plar ta'minoti</li>
+              <li>✔️ Maxsus VIP Lounge, kofe & fitnes bar</li>
+            </ul>
+            <button class="btn btn-outline btn-block select-plan-btn" data-plan="VIP Champion" data-i18n="plan_select_btn">Tanlash</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS & FAQ -->
+    <section class="section faq-section">
+      <div class="container">
+        <div class="grid-2col">
+          <div>
+            <span class="section-tag" data-i18n="reviews_tag">A'ZOLAR FIKRI</span>
+            <h2 class="section-title" data-i18n="reviews_title">Mijozlarimiz Nima Deydi?</h2>
+
+            <div class="review-box">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+              <p class="review-quote">
+                "Toshkentda bunday yuqori darajadagi chim va clay kortlar borligidan hayratdaman. Murabbiylar juda professional, ayniqsa Sardor aka bilan 3 oyda forehand zarbam butunlay o'zgardi."
+              </p>
+              <div class="reviewer-meta">
+                <strong>Bobur Aliyev</strong> • Havaskor tennischi (2 yillik a'zo)
+              </div>
+            </div>
+
+            <div class="review-box" style="margin-top: 1.5rem;">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+              <p class="review-quote">
+                "Onlayn tizim orqali kort band qilish juda oson ekan. Do'konidan Babolat raketka ham oldim. Hammasi a'lo darajada tashkil qilingan!"
+              </p>
+              <div class="reviewer-meta">
+                <strong>Madina Karimova</strong> • Klub a'zosi
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <span class="section-tag" data-i18n="rules_tag">QOIDALAR VA KO'RSATMALAR</span>
+            <h2 class="section-title" data-i18n="rules_title">Tez-tez Beriladigan Savollar</h2>
+
+            <div class="accordion" id="faqAccordion">
+              <div class="acc-item active">
+                <button class="acc-btn">
+                  <span>Kortga qanday poyabzalda kelish kerak?</span>
+                  <span class="acc-icon">+</span>
+                </button>
+                <div class="acc-content">
+                  Kort qoplamasini saqlash maqsadida faqat maxsus yassi taglikli, polni chizmaydigan (Non-Marking) tennis krossovkalari talab qilinadi. Qora qalin taglikli botinkalarda kirish taqiqlanadi.
+                </div>
+              </div>
+
+              <div class="acc-item">
+                <button class="acc-btn">
+                  <span>Raketkam yo'q bo'lsa ijaraga olsam bo'ladimi?</span>
+                  <span class="acc-icon">+</span>
+                </button>
+                <div class="acc-content">
+                  Albatta! Bron qilish jarayonida yoki klub qabulxonasida Wilson va Babolat rusumidagi professional raketkalar hamda yangi to'plarni ijaraga olishingiz mumkin.
+                </div>
+              </div>
+
+              <div class="acc-item">
+                <button class="acc-btn">
+                  <span>Band qilingan vaqtni bekor qilish mumkinmi?</span>
+                  <span class="acc-icon">+</span>
+                </button>
+                <div class="acc-content">
+                  O'yin boshlanishiga kamida 4 soat qolganda bepul bekor qilish yoki boshqa qulay vaqtga ko'chirish mumkin.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SHOPPING CART SLIDE-OUT DRAWER -->
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span data-i18n="cart_title">Xarid Savatchasi</span>
+      </div>
+      <button class="close-cart-btn" id="closeCartBtn">&times;</button>
+    </div>
+
+    <div class="cart-items-body" id="cartItemsList">
+      <!-- Dynamic cart items -->
+      <div class="cart-empty-msg" id="cartEmptyMsg">
+        <div class="empty-cart-icon">🛒</div>
+        <p data-i18n="cart_empty">Savatchangiz hozircha bo'sh</p>
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-row">
+        <span data-i18n="cart_subtotal">Jami summa:</span>
+        <strong id="cartSubtotalAmount">0 so'm</strong>
+      </div>
+      <button class="btn btn-primary btn-block" id="checkoutBtn" data-i18n="cart_checkout_btn">Buyurtmani Rasmiylashtirish</button>
+      <button class="btn btn-glass btn-block btn-sm" id="clearCartBtn" style="margin-top:0.5rem;" data-i18n="cart_clear_btn">Savatni tozalash</button>
+    </div>
+  </aside>
+
+  <!-- BOOKING SUCCESS MODAL -->
+  <div class="modal-backdrop" id="bookingSuccessModal" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-success-icon">✓</div>
+      <h3 class="modal-title" data-i18n="modal_success_title">Kort Muvaffaqiyatli Band Qilindi!</h3>
+      <p class="modal-text" data-i18n="modal_success_desc">Sizning buyurtmangiz tasdiqlandi. Elektron chipta ma'lumotlari:</p>
+      <div class="booking-receipt" id="bookingReceiptBox">
+        <!-- Injected details -->
+      </div>
+      <button class="btn btn-primary btn-block" id="closeModalBtn" data-i18n="modal_close_btn">Tushunarli</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col brand-col">
+        <div class="brand-logo footer-logo">
+          <div class="logo-ball-icon">
+            <svg viewBox="0 0 36 36" class="tennis-ball-svg">
+              <circle cx="18" cy="18" r="16" class="ball-bg" />
+              <path d="M 6 8 C 16 12, 16 24, 6 28" class="ball-seam" />
+              <path d="M 30 8 C 20 12, 20 24, 30 28" class="ball-seam" />
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">VORTEX</span>
+            <span class="brand-sub">TENNIS CLUB</span>
+          </div>
+        </div>
+        <p class="footer-about" data-i18n="footer_about">
+          O'zbekistondagi eng yaxshi tennis tajribasi. Professional standartlar, zamonaviy texnologiyalar va jahon darajasidagi sport muhiti.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-icon" title="Instagram">📸</a>
+          <a href="#" class="social-icon" title="Telegram">✈️</a>
+          <a href="#" class="social-icon" title="YouTube">▶️</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading" data-i18n="footer_quick_links">Tezkor Havolalar</h4>
+        <ul class="footer-links">
+          <li><a href="#hero" data-i18n="nav_home">Bosh sahifa</a></li>
+          <li><a href="#booking" data-i18n="nav_booking">Kort band qilish</a></li>
+          <li><a href="#live-scores" data-i18n="nav_scores">Jonli Natijalar</a></li>
+          <li><a href="#academy" data-i18n="nav_academy">Murabbiylar</a></li>
+          <li><a href="#pro-shop" data-i18n="nav_shop">Pro Do'kon</a></li>
+          <li><a href="#mini-game" data-i18n="nav_game">Mini O'yin</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading" data-i18n="footer_courts_title">Kortlar Turlari</h4>
+        <ul class="footer-links">
+          <li><a href="#booking">Wimbledon Grass Court</a></li>
+          <li><a href="#booking">Roland Garros Clay Court</a></li>
+          <li><a href="#booking">US Open Hard Court</a></li>
+          <li><a href="#booking">VIP Yopiq Arena</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading" data-i18n="footer_contacts_title">Manzil va Aloqa</h4>
+        <p class="contact-line">📍 Toshkent sh., Chilonzor tumani, Bunyodkor ko'chasi 45-uy</p>
+        <p class="contact-line">📞 +998 (71) 200-88-99</p>
+        <p class="contact-line">✉️ info@vortextennis.uz</p>
+        <p class="contact-line">⏰ 06:00 — 23:30 (Har kuni)</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2026 Vortex Tennis Club. Barcha huquqlar himoyalangan.</p>
+        <p class="created-tag">Crafted for Champions 🎾</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

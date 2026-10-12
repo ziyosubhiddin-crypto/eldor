@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>EA SPORTS FC™ MOBILE ONLINE | 100% TEKIN PAKLAR & ULTIMATE TEAM</title>
+  <meta name="description" content="FC Mobile Online - Cheksiz bepul TOTY, Icon va UCL paklarni oching, o'z tarkibingizni 99 OVR qiling va penalti hamda VSA o'yinlarida g'alaba qozoning!">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Space+Grotesk:wght@700;800&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><polygon points=%2216,2 30,9 30,23 16,30 2,23 2,9%22 fill=%22%2300ff87%22/><text x=%2216%22 y=%2222%22 font-size=%2214%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22%23024731%22 font-family=%22sans-serif%22>FC</text></svg>">
+</head>
+<body class="fc-theme">
+
+  <!-- SOUND NOTIFICATION TOAST -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- TOP HEADER PROFILE BAR (AUTHENTIC FC MOBILE STYLE) -->
+  <header class="fc-topbar">
+    <div class="topbar-inner container">
+      <!-- User profile & Level -->
+      <div class="user-profile-badge">
+        <div class="avatar-circle">👑</div>
+        <div class="user-meta">
+          <div class="user-name-line">
+            <span class="user-name">CHAMPION_UZ</span>
+            <span class="vip-tag">VIP 10</span>
+          </div>
+          <div class="level-progress-bar">
+            <div class="progress-fill" style="width: 82%;"></div>
+            <span class="level-text">LVL 55</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Currency Counters (FREE & UNLIMITED) -->
+      <div class="currencies-group">
+        <!-- Team OVR Badge -->
+        <div class="currency-pill team-ovr-pill">
+          <span class="cur-icon">🛡️</span>
+          <div class="cur-info">
+            <span class="cur-lbl">JAMOA OVR</span>
+            <span class="cur-val text-neon" id="headerTeamOvr">98</span>
+          </div>
+        </div>
+
+        <!-- Free Coins -->
+        <div class="currency-pill coins-pill">
+          <span class="cur-icon">🪙</span>
+          <div class="cur-info">
+            <span class="cur-lbl">COINS (TEKIN)</span>
+            <span class="cur-val" id="userCoins">25,400,000</span>
+          </div>
+          <button class="add-funds-btn" id="addCoinsBtn" title="Cheksiz Coins olish">+</button>
+        </div>
+
+        <!-- Free FC Points / Gems -->
+        <div class="currency-pill gems-pill">
+          <span class="cur-icon">💎</span>
+          <div class="cur-info">
+            <span class="cur-lbl">FC GEMS (TEKIN)</span>
+            <span class="cur-val" id="userGems">850,000</span>
+          </div>
+          <button class="add-funds-btn" id="addGemsBtn" title="Cheksiz Gem olish">+</button>
+        </div>
+      </div>
+
+      <!-- Settings & Controls -->
+      <div class="topbar-actions">
+        <!-- Sound Toggle -->
+        <button id="soundToggleBtn" class="topbar-btn" title="Ovozni yoqish/o'chirish">
+          <span id="soundIconOn">🔊</span>
+          <span id="soundIconOff" style="display:none;">🔇</span>
+        </button>
+
+        <!-- Lang Switcher -->
+        <div class="lang-toggle-box">
+          <button id="langUzBtn" class="lang-btn active">UZ</button>
+          <span>/</span>
+          <button id="langEnBtn" class="lang-btn">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION TABS -->
+  <nav class="fc-navigation">
+    <div class="container nav-tabs-wrapper">
+      <button class="nav-tab active" data-tab="packs">
+        <span class="tab-icon">📦</span>
+        <span class="tab-label" data-i18n="tab_packs">PAKLAR (TEKIN)</span>
+      </button>
+
+      <button class="nav-tab" data-tab="squad">
+        <span class="tab-icon">⚽</span>
+        <span class="tab-label" data-i18n="tab_squad">MENING TARKIBIM</span>
+      </button>
+
+      <button class="nav-tab" data-tab="shootout">
+        <span class="tab-icon">🎯</span>
+        <span class="tab-label" data-i18n="tab_shootout">PENALTI O'YINI</span>
+      </button>
+
+      <button class="nav-tab" data-tab="vsa">
+        <span class="tab-icon">🏆</span>
+        <span class="tab-label" data-i18n="tab_vsa">VSA TURNIRI</span>
+      </button>
+
+      <button class="nav-tab" data-tab="club">
+        <span class="tab-icon">🎴</span>
+        <span class="tab-label" data-i18n="tab_club">KOLLEKSIYA (<span id="clubCardsCount">0</span>)</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MAIN APP CONTAINER -->
+  <main class="main-content container">
+
+    <!-- TAB 1: FREE PACK STORE (100% TEKIN!) -->
+    <section class="tab-view active" id="view-packs">
+      <div class="store-hero-banner">
+        <div class="banner-badge">🔥 BARCHA PAKLAR 100% BEPUL!</div>
+        <h1 class="store-hero-title">
+          EA SPORTS FC™ MOBILE <br>
+          <span class="text-neon-gradient">CHEKSIZ BEPUL PAKLAR DASTURI</span>
+        </h1>
+        <p class="store-hero-sub">
+          Hech qanday to'lovsiz istalgancha TOTY, Icon va Chempionlar Ligasi paklarini oching! Messi 99, Ronaldo 99, Mbappé va Pelé kartalarini o'z tarkibingizga qo'shing.
+        </p>
+      </div>
+
+      <div class="packs-shelf-title">
+        <h2 data-i18n="featured_packs">Maxsus Taqdim Etilgan Paklar</h2>
+        <span class="free-badge">0 SO'M / 0 COINS</span>
+      </div>
+
+      <!-- PACKS GRID -->
+      <div class="packs-grid" id="packsGrid">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+    </section>
+
+    <!-- TAB 2: SQUAD BUILDER (MY ULTIMATE TEAM 11) -->
+    <section class="tab-view" id="view-squad">
+      <div class="squad-header-controls">
+        <div class="squad-title-box">
+          <h2 data-i18n="squad_title">Mening Asosiy Tarkibim (Ultimate 11)</h2>
+          <div class="squad-sub">Format: <strong>4-3-3 Attack</strong> • Kimyo: <strong class="text-neon" id="squadChemistry">100/100</strong></div>
+        </div>
+
+        <div class="squad-actions-bar">
+          <button class="btn btn-primary" id="autoBuildSquadBtn">
+            ⚡ Avtomatik Eng Kuchli Tarkib (Auto-Best OVR)
+          </button>
+          <button class="btn btn-outline" id="resetSquadBtn">
+            🔄 Tozalash
+          </button>
+        </div>
+      </div>
+
+      <!-- SOCCER PITCH WITH 11 PLAYERS -->
+      <div class="soccer-pitch-container">
+        <div class="pitch-grass">
+          <!-- Field markings -->
+          <div class="pitch-half-line"></div>
+          <div class="pitch-center-circle"></div>
+          <div class="pitch-penalty-area top"></div>
+          <div class="pitch-penalty-area bottom"></div>
+
+          <!-- Line 1: Attackers (LW, ST, RW) -->
+          <div class="pitch-row attack-row">
+            <div class="slot-wrapper" data-pos="LW" id="slot-LW"></div>
+            <div class="slot-wrapper" data-pos="ST" id="slot-ST"></div>
+            <div class="slot-wrapper" data-pos="RW" id="slot-RW"></div>
+          </div>
+
+          <!-- Line 2: Midfielders (CM, CAM, CM) -->
+          <div class="pitch-row mid-row">
+            <div class="slot-wrapper" data-pos="CM1" data-allowed="CM" id="slot-CM1"></div>
+            <div class="slot-wrapper" data-pos="CAM" id="slot-CAM"></div>
+            <div class="slot-wrapper" data-pos="CM2" data-allowed="CM" id="slot-CM2"></div>
+          </div>
+
+          <!-- Line 3: Defenders (LB, CB, CB, RB) -->
+          <div class="pitch-row def-row">
+            <div class="slot-wrapper" data-pos="LB" id="slot-LB"></div>
+            <div class="slot-wrapper" data-pos="CB1" data-allowed="CB" id="slot-CB1"></div>
+            <div class="slot-wrapper" data-pos="CB2" data-allowed="CB" id="slot-CB2"></div>
+            <div class="slot-wrapper" data-pos="RB" id="slot-RB"></div>
+          </div>
+
+          <!-- Line 4: Goalkeeper (GK) -->
+          <div class="pitch-row gk-row">
+            <div class="slot-wrapper" data-pos="GK" id="slot-GK"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick squad replacement drawer/modal trigger -->
+      <div class="squad-bench-preview">
+        <h3>Zaxira O'yinchilaringiz (Paklardan ochilgan):</h3>
+        <div class="bench-cards-strip" id="benchCardsStrip">
+          <!-- Populated from collection -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: PENALTY SHOOTOUT (MINI-GAME CANVAS) -->
+    <section class="tab-view" id="view-shootout">
+      <div class="shootout-container">
+        <div class="shootout-header">
+          <div class="shootout-score-board">
+            <div class="s-team">
+              <span class="s-name">SIZ (FC UZBEKISTAN)</span>
+              <span class="s-goals" id="userGoalsCount">0</span>
+            </div>
+            <div class="s-vs">VS</div>
+            <div class="s-team">
+              <span class="s-name">RAQIB (AI KEEPER)</span>
+              <span class="s-goals" id="aiSavesCount">0</span>
+            </div>
+          </div>
+          <div class="shootout-round-badge">
+            <span id="shootoutRoundLabel">ZARBA №1 / 5</span>
+          </div>
+        </div>
+
+        <!-- CANVAS STADIUM GOAL SHOOTOUT -->
+        <div class="goal-canvas-wrapper">
+          <canvas id="penaltyCanvas" width="800" height="480"></canvas>
+          <div class="canvas-shot-targets" id="shotTargetsOverlay">
+            <button class="target-zone tl" data-target="top-left" title="Yuqori chap burchak">🎯</button>
+            <button class="target-zone tr" data-target="top-right" title="Yuqori o'ng burchak">🎯</button>
+            <button class="target-zone bl" data-target="bottom-left" title="Pastki chap">🎯</button>
+            <button class="target-zone bc" data-target="bottom-center" title="Markaz">🎯</button>
+            <button class="target-zone br" data-target="bottom-right" title="Pastki o'ng">🎯</button>
+          </div>
+          <div class="shot-result-banner" id="shotResultBanner">
+            <div class="result-text" id="shotResultText">GOOOL!</div>
+          </div>
+        </div>
+
+        <div class="shootout-controls-bar">
+          <div class="kicker-info">
+            <span>To'p tepuvchi:</span>
+            <strong id="currentKickerName" class="text-neon">Lionel Messi (99 OVR)</strong>
+          </div>
+          <button class="btn btn-primary" id="resetShootoutBtn">Qaytadan Boshlash 🔄</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: VSA MATCH SIMULATOR (VS ATTACK) -->
+    <section class="tab-view" id="view-vsa">
+      <div class="vsa-container">
+        <div class="vsa-banner">
+          <h2>VS ATTACK (VSA) 90-SONIYALIK ONLAYN TEZKOR O'YIN</h2>
+          <p>Raqibingiz bilan yuzma-yuz imkoniyatlar orqali to'qnashing. Eng ko'p gol urgan g'olib bo'ladi!</p>
+        </div>
+
+        <div class="vsa-match-arena">
+          <!-- Opponent Selector -->
+          <div class="vsa-setup-box" id="vsaSetupBox">
+            <h3>Raqib Jamoani Tanlang:</h3>
+            <div class="rival-teams-grid">
+              <div class="rival-card active" data-rival="Real Madrid" data-ovr="97">
+                <div class="rival-badge">👑</div>
+                <div class="rival-name">Real Madrid</div>
+                <div class="rival-ovr">97 OVR</div>
+              </div>
+              <div class="rival-card" data-rival="Manchester City" data-ovr="98">
+                <div class="rival-badge">⚡</div>
+                <div class="rival-name">Manchester City</div>
+                <div class="rival-ovr">98 OVR</div>
+              </div>
+              <div class="rival-card" data-rival="FC Barcelona" data-ovr="95">
+                <div class="rival-badge">🔵🔴</div>
+                <div class="rival-name">FC Barcelona</div>
+                <div class="rival-ovr">95 OVR</div>
+              </div>
+              <div class="rival-card" data-rival="Bayern München" data-ovr="96">
+                <div class="rival-badge">🔴</div>
+                <div class="rival-name">Bayern München</div>
+                <div class="rival-ovr">96 OVR</div>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-lg" id="startVsaMatchBtn" style="margin-top: 1.5rem; width: 100%;">
+              ⚔️ VSA O'yinini Boshlash
+            </button>
+          </div>
+
+          <!-- Active Match Screen (Hidden until start) -->
+          <div class="vsa-live-screen" id="vsaLiveScreen" style="display: none;">
+            <div class="vsa-live-header">
+              <div class="vsa-team-score">
+                <span class="vsa-team-name">SIZ (98 OVR)</span>
+                <span class="vsa-goals-number" id="vsaUserScore">0</span>
+              </div>
+              <div class="vsa-timer-badge">
+                <span id="vsaTimer">1:30</span>
+              </div>
+              <div class="vsa-team-score">
+                <span class="vsa-goals-number" id="vsaRivalScore">0</span>
+                <span class="vsa-team-name" id="vsaRivalName">Real Madrid (97 OVR)</span>
+              </div>
+            </div>
+
+            <!-- Chance Simulation Window -->
+            <div class="vsa-chance-window">
+              <div class="chance-quality-badge" id="chanceQuality">🔥 BUYUK IMKONIYAT (GREAT CHANCE)</div>
+              <div class="chance-desc" id="chanceDesc">
+                Mbappé jarima maydoniga yorib kirdi, darvozabon oldida yolg'iz!
+              </div>
+
+              <!-- Interactive Decision Buttons -->
+              <div class="vsa-action-choices">
+                <button class="vsa-choice-btn" data-action="finesse">🎯 Nozik Aylantirma Zarba (Finesse)</button>
+                <button class="vsa-choice-btn" data-action="power">💥 Kuchli Zarba (Power Shot)</button>
+                <button class="vsa-choice-btn" data-action="chip">🪂 Darvozabon ustidan oshirish (Chip)</button>
+                <button class="vsa-choice-btn" data-action="pass">🤝 Bo'sh sherigiga uzatish (Pass)</button>
+              </div>
+            </div>
+
+            <!-- Event Feed -->
+            <div class="vsa-event-feed" id="vsaEventFeed">
+              <div class="feed-msg">Match boshlandi! Hujumga o'ting!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: MY CLUB COLLECTION (MY BINDER) -->
+    <section class="tab-view" id="view-club">
+      <div class="club-header">
+        <div>
+          <h2>Mening Futbolchilar Kolleksiyam</h2>
+          <p class="club-stats-sub">Paklardan ochilgan barcha kartalar. Jami kartalar: <strong id="clubTotalBadge" class="text-neon">0</strong></p>
+        </div>
+
+        <!-- Filter options -->
+        <div class="club-filters">
+          <button class="filter-chip active" data-filter="all">Barchasi</button>
+          <button class="filter-chip" data-filter="toty">TOTY</button>
+          <button class="filter-chip" data-filter="icon">Iconlar</button>
+          <button class="filter-chip" data-filter="ucl">UCL</button>
+          <button class="filter-chip" data-filter="gold">Oltin</button>
+        </div>
+      </div>
+
+      <div class="club-cards-grid" id="clubCardsGrid">
+        <!-- Injected by script.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- FULLSCREEN WALKOUT PACK OPENING CINEMATIC -->
+  <!-- ========================================== -->
+  <div class="walkout-modal-backdrop" id="walkoutModal" style="display: none;">
+    <div class="walkout-stage" id="walkoutStage">
+      
+      <!-- Stage 1: Spotlights, lasers & background explosion -->
+      <div class="walkout-lasers-bg">
+        <div class="laser l1"></div>
+        <div class="laser l2"></div>
+        <div class="laser l3"></div>
+      </div>
+
+      <!-- Stage 2: Flashing Nation Flag -->
+      <div class="reveal-step reveal-flag" id="revealFlagBox">
+        <span class="flag-icon" id="walkoutFlag">🇦🇷</span>
+        <span class="step-label" id="walkoutNationLabel">ARGENTINA</span>
+      </div>
+
+      <!-- Stage 3: Flashing Position -->
+      <div class="reveal-step reveal-pos" id="revealPosBox">
+        <span class="pos-badge" id="walkoutPos">RW</span>
+      </div>
+
+      <!-- Stage 4: Flashing Club Logo -->
+      <div class="reveal-step reveal-club" id="revealClubBox">
+        <span class="club-badge" id="walkoutClub">INTER MIAMI</span>
+      </div>
+
+      <!-- Stage 5: THE GRAND WALKOUT CARD REVEAL! -->
+      <div class="reveal-final-card" id="revealFinalCardBox">
+        <div class="particles-burst" id="particlesBurst"></div>
+
+        <!-- Rendered Card Container with 3D Holographic tilt -->
+        <div class="walkout-card-container" id="walkoutCardRender">
+          <!-- Dynamic card HTML injected -->
+        </div>
+
+        <div class="walkout-announcement">
+          <div class="walkout-ovr-shine" id="walkoutOvrAnnounce">99</div>
+          <div class="walkout-name-announce" id="walkoutNameAnnounce">LIONEL MESSI</div>
+        </div>
+
+        <div class="walkout-footer-actions">
+          <button class="btn btn-primary btn-lg" id="walkoutEquipBtn">
+            ✅ Asosiy Tarkibga Qo'yish
+          </button>
+          <button class="btn btn-glass btn-lg" id="walkoutAnotherBtn">
+            📦 Yana Bitta Bepul Pak Ochish
+          </button>
+          <button class="btn btn-outline" id="walkoutCloseBtn">
+            Kolleksiyaga Saqlash
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAYER SELECTION MODAL (When clicking a pitch slot) -->
+  <div class="slot-select-modal-backdrop" id="slotSelectModal" style="display: none;">
+    <div class="slot-select-modal">
+      <div class="slot-select-header">
+        <h3><span id="slotSelectPosTitle">RW</span> Pozitsiyasi Uchun O'yinchi Tanlang</h3>
+        <button class="close-modal-btn" id="closeSlotSelectModal">&times;</button>
+      </div>
+      <div class="slot-select-body" id="slotSelectPlayersList">
+        <!-- List of eligible players from collection -->
+      </div>
+    </div>
+  </div>
+
+  <script src="players.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
